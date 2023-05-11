@@ -29,9 +29,13 @@ for urun in urunler:
     for key,value in urun.items():
         if key== "price":
             toplam+=int(value)
+    # fiyat=int(urun["price"])
+    # toplam+=fiyat
 print(toplam)
 # 6- Ürünlerden fiyatı en fazla 5000 olan ürünleri gösteriniz
 for urun in urunler:
     for key,value in urun.items():
         if key== "price" and int(value)<=5000:
             print(urun)
+    # if int(urun["price"]) <= 5000:
+    #     print(urun["name"])
