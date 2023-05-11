@@ -12,7 +12,8 @@ bas=int(input("başlangıç sayısı: "))
 bit=int(input("bitiş sayısı: "))
 
 while not (bas==bit+1):
-    print(bas)
+    if bas%2==1:
+        print(bas)
     bas+=1
 # 3: 1-100 arasındaki sayıları azalan şekilde yazdırın.
 sayi=100
@@ -23,17 +24,25 @@ while not(sayi<=0):
 # 4: Kullanıcıdan alacağınız 5 sayıyı ekranda sıralı bir şekilde
 # yazdırın.
 
-a=int(input("sayi: "))
-b=int(input("sayi: "))
-c=int(input("sayi: "))
-d=int(input("sayi: "))
-e=int(input("sayi: "))
-sayilar=[a,b,c,d,e]
-x=0
-while x<5:
-    print(max(sayilar))
-    sayilar.remove(max(sayilar))
-    x+=1
+# a=int(input("sayi: "))
+# b=int(input("sayi: "))
+# c=int(input("sayi: "))
+# d=int(input("sayi: "))
+# e=int(input("sayi: "))
+# sayilar=[a,b,c,d,e]
+# x=0
+# while x<5:
+#     print(max(sayilar))
+#     sayilar.remove(max(sayilar))
+#     x+=1
+
+numbers=[]
+i=0
+while i<5:
+    sayi=int(input("sayi: "))
+    numbers.append(sayi)
+    i+=1
+print(numbers.sort())
     
 # 5: Kullanıcıdan alacağınız sınırsız ürün bilgisini urunler listesi içinde
 # ** ürün sayısını kullanıcıya sorun.
