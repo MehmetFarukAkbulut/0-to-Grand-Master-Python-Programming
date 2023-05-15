@@ -26,7 +26,7 @@ class Quiz:
         
         answer= input("Cevap: ")
         self.guess(answer)
-        self.loadQuestions()
+        self.loadQuestion()
         
     def guess(self,answer):
         question =self.getQuestion()
@@ -35,19 +35,31 @@ class Quiz:
         self.questionIndex+=1
 
             
-    def loadQuestions(self):
+    def loadQuestion(self):
         if len(self.questions)==self.questionIndex:
             self.showScore()
         else:
+            self.displayProgress()
             self.displayQuestion()
             
             
     def showScore(self):
-        pass
+        print("Score: ",self.score)
+        
+    def displayProgress(self):
+        totalQuestion=len(self.questions)
+        questionNumber=self.questionIndex+1
+        
+        if questionNumber> totalQuestion:
+            print("Quiz bitti.")
+        else:
+            print(f"Question {questionNumber} of {totalQuestion}".center(100,"*"))
 q1=Question("En iyi programlama dili hangisidir ?",["C#","python","javascript","java"],"python")
 q2=Question("En popüler programlama dili hangisidir ?",["javascript","C#","python","java"],"python")
 q3=Question("En çok kazandıran programlama dili hangisidir ?",["python","C#","javascript","java"],"python")
-questions=[q1,q2,q3]
+q4=Question("En çok sevilen programlama dili hangisidir ?",["java","javascript","python","C#"],"python")
+q5=Question("En çok kolay programlama dili hangisidir ?",["javascript","java""python","C#",],"python")
+questions=[q1,q2,q3,q4,q5]
 
 quiz=Quiz(questions)
-quiz.displayQuestion()
+quiz.loadQuestion()
