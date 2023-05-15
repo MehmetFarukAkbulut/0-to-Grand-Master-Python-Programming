@@ -1,4 +1,4 @@
-# mylist=[1,2,3]
+mylist=[1,2,3]
 # myString="my string"
 
 
@@ -14,8 +14,6 @@ class Movie():
         self.duration=duration
         print("movie objesi oluşturuldu.")
 m=Movie("film adı","yönetmen adı", "filmin süresi")
-
-print(type(m))
-print(len(m))
-
+print(str(mylist))
+print(str(m))
 
