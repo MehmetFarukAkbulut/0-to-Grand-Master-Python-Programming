@@ -12,7 +12,8 @@ class Movie():
         self.title=title
         self.director=director
         self.duration=duration
-m=Movie()
+        print("movie objesi oluşturuldu.")
+m=Movie("film adı","yönetmen adı", "filmin süresi")
 
 print(type(m))
 print(len(m))
