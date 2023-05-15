@@ -1,13 +1,17 @@
-mylist=[1,2,3]
-myString="my string"
+# mylist=[1,2,3]
+# myString="my string"
 
-print(len(mylist))
-print(len(myString))
-print(type(mylist))
-print(type(myString))
+
+# print(len(mylist))
+# print(len(myString))
+# print(type(mylist))
+# print(type(myString))
 
 class Movie():
-    pass
+    def __init__(self,title,director,duration):
+        self.title=title
+        self.director=director
+        self.duration=duration
 m=Movie()
 
 print(type(m))
