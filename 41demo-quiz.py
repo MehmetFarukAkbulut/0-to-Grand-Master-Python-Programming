@@ -26,14 +26,24 @@ class Quiz:
         
         answer= input("Cevap: ")
         self.guess(answer)
+        self.loadQuestions()
         
     def guess(self,answer):
         question =self.getQuestion()
         if question.checkAnswer(answer):
             self.score+=1
         self.questionIndex+=1
-        self.displayQuestion()
+
             
+    def loadQuestions(self):
+        if len(self.questions)==self.questionIndex:
+            self.showScore()
+        else:
+            self.displayQuestion()
+            
+            
+    def showScore(self):
+        pass
 q1=Question("En iyi programlama dili hangisidir ?",["C#","python","javascript","java"],"python")
 q2=Question("En popüler programlama dili hangisidir ?",["javascript","C#","python","java"],"python")
 q3=Question("En çok kazandıran programlama dili hangisidir ?",["python","C#","javascript","java"],"python")
