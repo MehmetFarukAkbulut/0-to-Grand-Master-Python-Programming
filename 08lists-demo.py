@@ -34,11 +34,11 @@ print(cars[::-1])
 # liste oluştur: 
     # studentA: Faruk Akbulut 2000,(100,99,90)
     # studentB: Rümeysa Akbulut 19998,(90,89,80)
-    # studentC: Göksu Oğur 2002,(80,79,70)
+    # studentC: Fatih Akbulut 1991,(80,79,70)
     
 studentA=['Faruk', 'Akbulut', 2000,[100,99,90]]     
 studentB=['Rümeysa','Akbulut', 1998,[90,89,80]]     
-studentC=['Göksu','Oğur', 2002,[80,79,70]]    
+studentC=['Fatih','Akbulut', 1991,[80,79,70]]    
 students= [studentA,studentB,studentC] 
 print(studentA)
 print(studentB)

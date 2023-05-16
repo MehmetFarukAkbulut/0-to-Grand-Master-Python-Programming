@@ -34,20 +34,20 @@ users={
         'address':'istanbul',
         'phone':'1233124'
     },
-    'göksuoğur':{
-        'age':21,
+    'fatihakbulut':{
+        'age':32,
         'roles': ['user'],
-        'email':'göksuogur@gmail.com',
-        'address':'istanbul',
+        'email':'fatihakbulut@gmail.com',
+        'address':'eskişehir',
         'phone':'1233125'
     }
 }
 
 
-print(users['göksuoğur']['age'])
-print(users['göksuoğur']['email'])
-print(users['göksuoğur']['address'])
-print(users['göksuoğur']['roles'][0])
+print(users['fatihakbulut']['age'])
+print(users['fatihakbulut']['email'])
+print(users['fatihakbulut']['address'])
+print(users['fatihakbulut']['roles'][0])
 print(users['farukakbulut']['age'])
 print(users['farukakbulut']['email'])
 print(users['farukakbulut']['address'])
