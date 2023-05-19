@@ -30,8 +30,38 @@ class UserRepository:
         self.users.append(user)
         self.savetoFile()
         print("Kullanıcı oluşturuldu.")
-    def login(self):
-        pass
+    def login(self, username, password):
+        try:
+            error_messages = [""]
+            for user in self.users:
+                if user.username == username and user.password == password:
+                    self.isLoggedIn = True
+                    self.currentUser = user
+                    print('Login başarılı.')
+                    return
+                if user.username != username:
+                    error_messages[0]="Yanlış kullanıcı adı girdiniz."
+                elif user.password != password:
+                    error_messages[0]="Yanlış şifre girdiniz."
+            if error_messages:
+                error_message = "\n".join(error_messages)
+                raise ValueError(error_message)
+            else:
+                raise ValueError("Kullanıcı bulunamadı.")
+        except ValueError as e:
+            print("Hata:", str(e))        
+
+    def logout(self):
+        self.isLoggedIn=False
+        self.currentUser={}
+        print("Çıkış Yapıldı.")
+        
+    def identity(self):
+        if self.isLoggedIn:
+            print(f"username: {self.currentUser.username}")
+        else: 
+            print("Giriş yapılmadı.")
+                
     def savetoFile(self):
         list=[]
         for user in self.users:
@@ -59,15 +89,23 @@ while True:
             repository.register(user)
             
             print(repository.users)
-            
-            pass #register
+
         elif secim=="2":
-            pass #login
+            if repository.isLoggedIn:
+                print("Zaten giriş yapılmış..")
+            else:    
+                username=input("username: ")
+                password=input("password: ")
+                repository.login(username,password)
+        
         elif secim=="3":
-            pass #logout
+            if not repository.isLoggedIn:
+                print("Zaten giriş yapılmamış..")
+            else: 
+                repository.logout()
         
         elif secim=="4":
-            pass #display username
+            repository.identity()
         else:print("Yanlış Seçim.")
         
         
