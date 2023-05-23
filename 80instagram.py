@@ -45,7 +45,7 @@ class Instagram:
             
         while True:
             dialog.click()
-            action.key_down(KeysView.SPACE).key_up(KeysView.SPACE).perform()
+            action.key_down(Keys.SPACE).key_up(Keys.SPACE).perform()
             time.sleep(2)
             
             newCount= len(dialog.find_elements(By.CSS_SELECTOR,"li"))
