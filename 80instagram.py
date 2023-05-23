@@ -1,8 +1,10 @@
+from selenium.webdriver.common.keys import Keys
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
 import time
 
 username = ""
@@ -33,9 +35,31 @@ class Instagram:
         self.browser.get(f"https://www.instagram.com/{self.username}/")
         time.sleep(3)
 
-        self.browser.find_element(By.XPATH, '//a[contains(@href, "/followers/")]').click()
+        self.browser.find_element(By.XPATH, '//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a').click()
         time.sleep(2)
-        followers=self.browser.find_element(By.CSS_SELECTOR, 'div[role=dialog ul]').find_elements(By.CSS_SELECTOR,'li')
+        
+        dialog=self.browser.find_element(By.CSS_SELECTOR, 'div[role=dialog] ul')
+        followerCount=len(dialog.find_elements(By.CSS_SELECTOR,"li"))
+        print(f"first count: {followerCount}")
+        action= webdriver.ActionChains(self.browser)
+            
+        while True:
+            dialog.click()
+            action.key_down(KeysView.SPACE).key_up(KeysView.SPACE).perform()
+            time.sleep(2)
+            
+            newCount= len(dialog.find_elements(By.CSS_SELECTOR,"li"))
+            
+            if followerCount!=newCount:
+                followerCount=newCount
+                print(f"second count: {newCount}")
+                time.sleep(1)
+            else:
+                break
+            
+        
+        followers=dialog.find_elements(By.CSS_SELECTOR,'li')
+        
         for user in followers:
             link=user.find_element(By.CSS_SELECTOR,"a").get_attribute("href")
             print(link)
