@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+from selenium.webdriver.common.action_chains import ActionChains
 # from selenium.webdriver.support.ui import WebDriverWait
 # from selenium.webdriver.support import expected_conditions as EC
 import time
@@ -27,42 +28,45 @@ class Instagram:
         time.sleep(2)
         self.browser.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[1]/div/label/input').send_keys(self.username)
         self.browser.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[2]/div/label/input').send_keys(self.password)
-        time.sleep(1)
+        time.sleep(2)
         self.browser.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[3]/button/div').click()
-        time.sleep(3)
+        time.sleep(8)
         
     def getFollowers(self):
         self.browser.get(f"https://www.instagram.com/{self.username}/")
-        time.sleep(3)
-
-        self.browser.find_element(By.XPATH, '//*[@id="react-root"]/section/main/div/header/section/ul/li[2]/a').click()
+        time.sleep(4)
+        self.follower = self.browser.find_elements(By.TAG_NAME, "a")[12]
         time.sleep(2)
-        
-        dialog=self.browser.find_element(By.CSS_SELECTOR, 'div[role=dialog] ul')
-        followerCount=len(dialog.find_elements(By.CSS_SELECTOR,"li"))
-        print(f"first count: {followerCount}")
-        action= webdriver.ActionChains(self.browser)
+        self.browser.execute_script("arguments[0].click();", self.follower)
+        time.sleep(2)
+        self.followers=self.browser.find_elements(By.CSS_SELECTOR, "span._ac2a")[2].text
+        followers=int(self.followers)
+        print(followers)
+        try:
+            followerCount=0 
             
-        while True:
-            dialog.click()
-            action.key_down(Keys.SPACE).key_up(Keys.SPACE).perform()
-            time.sleep(2)
-            
-            newCount= len(dialog.find_elements(By.CSS_SELECTOR,"li"))
-            
-            if followerCount!=newCount:
-                followerCount=newCount
-                print(f"second count: {newCount}")
+            list=[]
+            while True:
+                for a in range(0, followers):
+                    list.append(self.browser.find_elements(By.CSS_SELECTOR, 'div.x9f619.xjbqb8w.x1rg5ohu.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1n2onr6.x1plvlek.xryxfnj.x1c4vz4f.x2lah0s.x1q0g3np.xqjyukv.x6s0dn4.x1oa3qoh.x1nhvcw1')[a].text)
+                    followerCount += 1
+                    if a%4==0:    
+
+                        dialog=self.browser.find_element(By.CSS_SELECTOR, 'div._ac76') 
+                        dialog.send_keys(Keys.SHIFT + Keys.TAB)
+                        time.sleep(3)
+                        self.browser.execute_script("arguments[0].click();", dialog)
+                        time.sleep(2)
+                    if followers != followerCount:
+                        print(f"Takipçi sayınız yazılıyor... {followerCount}")
+                    else:
+                        print(f"Toplam takipçi sayınız: {followerCount}")
+                        break
                 time.sleep(1)
-            else:
-                break
-            
-        
-        followers=dialog.find_elements(By.CSS_SELECTOR,'li')
-        
-        for user in followers:
-            link=user.find_element(By.CSS_SELECTOR,"a").get_attribute("href")
-            print(link)
+        except Exception as e:
+            print(e)
+        for user in list:
+            print(user)
 instgrm=Instagram(username,password)
 instgrm.signIn()
 instgrm.getFollowers()
