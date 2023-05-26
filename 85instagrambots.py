@@ -69,7 +69,7 @@ class Instagram:
             print(user)
         with open(f"85followers{self.username}.txt","w",encoding="UTF-8")as file:
             for item in list:
-                file.write(item+"\n")
+                file.write(f"https://www.instagram.com/{item}/\n")
     
     def followUser(self, username):
         self.browser.get("https://www.instagram.com/accounts/login/")
