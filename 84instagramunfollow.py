@@ -48,6 +48,37 @@ class Instagram:
         except Exception as e:
             print(e)
             time.sleep(10)
+    def unfollowUser(self, username):
+        self.browser.get("https://www.instagram.com/accounts/login/")
+        self.browser.maximize_window()
+        time.sleep(2)
+        
+        login_input = self.browser.find_element(By.NAME, 'username')
+        login_input.send_keys(self.username)
+        
+        password_input = self.browser.find_element(By.NAME, 'password')
+        password_input.send_keys(self.password)
+        password_input.send_keys(Keys.ENTER)
+        
+        time.sleep(5)
+        
+        user_url = f"https://www.instagram.com/{username}/"
+        self.browser.get(user_url)
+        
+        try:
+            time.sleep(10)
+            followButton=self.browser.find_element(By.TAG_NAME, "button")
+            if followButton.text== "Following":
+                followButton.click()
+                time.sleep(2)
+                self.browser.find_element(By.XPATH,'//button[text()="Unfollow"]').click()
+            else:
+                print("Zaten takip etmiyorsun.")
+            time.sleep(10)
+            
+        except Exception as e:
+            print(e)
+            time.sleep(10)
             
 
 username = ""
@@ -58,4 +89,4 @@ while username == "" and password == "":
     password = input("password: ")
 
 instgrm = Instagram(username, password)
-instgrm.followUser("mfaruk_akbulut")
+instgrm.unfollowUser("coding")
