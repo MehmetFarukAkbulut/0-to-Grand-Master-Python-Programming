@@ -27,7 +27,7 @@ class Twitter:
             # enter
             self.browser.find_element(By.CSS_SELECTOR, "input.r-30o5oe.r-1niwhzg.r-17gur6a.r-1yadl64.r-deolkf.r-homxoj.r-poiln3.r-7cikom.r-1ny4l3l.r-t60dpp.r-1dz5y72.r-fdjqy7.r-13qz1uu").send_keys(Keys.ENTER)
             time.sleep(2)
-            # password input.r-30o5oer-1niwhzg.r-17gur6a.r-1yadl64.r-deolkf.r-homxoj.r-poiln3.r-7cikom.r-1ny4l3l.r-t60dpp.r-1dz5y72.r-fdjqy7.r-13qz1uu
+            # password input
             self.browser.find_element(By.XPATH, "//input[@type='password']").send_keys(self.password)
             # enter
             self.browser.find_element(By.XPATH, "//input[@type='password']").send_keys(Keys.ENTER)
@@ -43,11 +43,42 @@ class Twitter:
             searchInput.send_keys(Keys.ENTER)
             time.sleep(5)
             
-            list=self.browser.find_elements(By.CSS_SELECTOR,"div.css-901oao.r-1nao33i.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")
-            for item in list:
+            tweet_list=self.browser.find_elements(By.CSS_SELECTOR,"div.css-901oao.r-1nao33i.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")
+            time.sleep(2)
+            tweet_texts = []
+            
+            for tweet in tweet_list:
+                tweet_texts.append(tweet.text)
+                       
+            loopCounter=0
+            last_height=self.browser.execute_script("return document.documentElement.scrollHeight")
+            while True:
+                if loopCounter>5:
+                    break
+                self.browser.execute_script("window.scrollTo(0,document.documentElement.scrollHeight);")
+                time.sleep(2)
+                new_height=self.browser.execute_script("return document.documentElement.scrollHeight")
+                if last_height==new_height:
+                    break
+                last_height=new_height
+                loopCounter+=1
+                time.sleep(2)
+                new_tweet_list = self.browser.find_elements(By.CSS_SELECTOR, "div.css-901oao.r-1nao33i.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")
+                time.sleep(2)
+                
+                for tweet in new_tweet_list:
+                    tweet_texts.append(tweet.text)
+                
+                for tweet in new_tweet_list:
+                    if tweet not in tweet_list:
+                        tweet_list.append(tweet)
+                
+                time.sleep(2)
+                
+            for tweet_text in tweet_texts:
                 print("***********************************")
-                print(item.text)
-            time.sleep(3)
+                print(tweet_text)
+            
         except Exception as e:
             print(e)
 
@@ -57,6 +88,9 @@ username = ""
 password = ""
 hashtag=""
 
+username="MFA_FARUK_MFA"
+password="Mfa134780:*"
+hashtag="python"
 while username == "" and password == "" and hashtag=="":
     username = input("username: ")
     password = input("password: ")
