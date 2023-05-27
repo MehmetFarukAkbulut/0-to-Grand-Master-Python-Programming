@@ -31,7 +31,7 @@ class Twitter:
             self.browser.find_element(By.XPATH, "//input[@type='password']").send_keys(self.password)
             # enter
             self.browser.find_element(By.XPATH, "//input[@type='password']").send_keys(Keys.ENTER)
-            time.sleep(20)
+            time.sleep(15)
         except Exception as e:
             print(e)
 
@@ -41,10 +41,11 @@ class Twitter:
             searchInput.send_keys(hashtag)
             time.sleep(2)
             searchInput.send_keys(Keys.ENTER)
-            time.sleep(2)
+            time.sleep(5)
             
             list=self.browser.find_elements(By.CSS_SELECTOR,"div.css-901oao.r-1nao33i.r-37j5jr.r-a023e6.r-16dba41.r-rjixqe.r-bcqeeo.r-bnwqim.r-qvutc0")
             for item in list:
+                print("***********************************")
                 print(item.text)
             time.sleep(3)
         except Exception as e:
@@ -55,6 +56,7 @@ class Twitter:
 username = ""
 password = ""
 hashtag=""
+
 while username == "" and password == "" and hashtag=="":
     username = input("username: ")
     password = input("password: ")
