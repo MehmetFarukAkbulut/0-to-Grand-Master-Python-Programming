@@ -1,7 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import time 
 
@@ -9,7 +11,7 @@ class LinkedIn:
     def __init__(self,username,password):
         self.service = webdriver.chrome.service.Service(ChromeDriverManager().install())
         self.browserProfile = webdriver.ChromeOptions()
-        self.browserProfile.add_experimental_option('prefs',{'intl.accept_languages':'en,en_US'})
+        self.browserProfile.add_experimental_option('prefs',{'intl.accept_languages':'tr,tr_TR'})
         self.browser = webdriver.Chrome(service=self.service, options=self.browserProfile)
         self.username = username
         self.password = password
@@ -19,62 +21,91 @@ class LinkedIn:
         
     def signIn(self):
         try:
-            self.browser.get('https://www.linkedin.com/sales/inbox/')
+            self.browser.get('https://www.linkedin.com/uas/login?session_redirect=/sales&fromSignIn=true&trk=navigator')
             self.browser.maximize_window()
             time.sleep(10)
-            # username input
-            userinput=self.browser.find_element(By.XPATH, "//input[@id='username']")
+            # username input 
+            userinput=self.browser.find_element(By.XPATH, "//*[@id='username']")
             userinput.click()
             userinput.send_keys(self.username)
 
             # password input
-            passwordinput=self.browser.find_element(By.XPATH, "//input[@id='password']")
+            passwordinput=self.browser.find_element(By.XPATH, "//*[@id='password']")
             passwordinput.click()
             passwordinput.send_keys(self.password)
             # enter
-            self.browser.find_element(By.XPATH, "//input[@id='password']").send_keys(Keys.ENTER)
-            time.sleep(15)
+            self.browser.find_element(By.XPATH, "//*[@id='password']").send_keys(Keys.ENTER)
+            time.sleep(35)
         except Exception as e:
             print(e)
-    def searchMessage(self,hashtag,kisi):
+    def searchMessage(self, hashtag, kisi):
         try:
-            nowChatList=[]
-            chatwithhashtag=[]
-            # 1848 kişi
-            for a in range(0,(kisi//20)):
-                moreUserbutton=self.browser.find_element(By.XPATH,"//button[@id='ember965']")    
-                moreUserbutton.click()
-                time.sleep(2)
+            self.browser.find_element(By.XPATH, "//*[@id='ember14']").click()
+            time.sleep(15)
             
-            for person in range(0,kisi):
-                self.browser.find_elements(By.XPATH,"//li[@class='list-style-none conversation-list-item']")[person].click()
-                time.sleep(2)
-                personname=self.browser.find_element(By.XPATH,"//div[@class='artdeco-entity-lockup__title ember-view']/span[@data-anonymize='person-name']").text
-                print(personname)
-                nowChat=self.browser.find_elements(By.XPATH,"//div[@data-x-message-content='message']")
+            nowChatList = []
+            chatwithhashtag = []
+            
+            # Scroll to the bottom of the chat list
+            for _ in range(kisi // 20):
+                chat_list = self.browser.find_element(By.XPATH, "//*[@id='content-main']/article/section[1]/div[2]")
+                self.browser.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", chat_list)
+                time.sleep(5)
+                load_older_button = self.browser.find_element(By.XPATH, "//*[@class='artdeco-button artdeco-button--1 artdeco-button--secondary ember-view mv1 mhA artdeco-button--0 block']")
+                load_older_button.click()
+                time.sleep(5)
 
-                for chat in nowChat:
-                    nowChatList.append(chat.text)
-                    for i in chat:
-                        if hashtag in nowChatList:
-                            chatwithhashtag.append(f"{personname} kullanıcısından mesaj: {i}")
+            for person in range(20, kisi):
+                try:
+                    person_element = WebDriverWait(self.browser, 10).until(
+                        EC.element_to_be_clickable((By.XPATH, f"//*[@id='content-main']/article/section[1]/div[2]/ul/li[{person+1}]"))
+                    )
+                    person_element.click()
+                    time.sleep(2)
+                    personname_element = WebDriverWait(self.browser, 10).until(
+                        EC.presence_of_element_located((By.XPATH, "//address[@class='mt2 ml8 inline-block t-14 t-bold t-roman ']/span[@data-anonymize='person-name']"))
+                    )
+                    personname = personname_element.text
+
+
+
+
+                    nowChat = self.browser.find_elements(By.XPATH, "//*[@class='t-14 white-space-pre-wrap break-words']")
+                    
+                    time.sleep(5)
+                    if len(nowChat) > 1:
+                        for chat_element in nowChat:
+                            for chat_element in nowChat:
+                                chat_text = chat_element.text
+                                nowChatList.append(chat_text)
+                                for i in chat_text:
+                                    if hashtag in nowChatList:
+                                        chatwithhashtag.append(f"{personname} kullanıcısından mesaj: {i}")
+                                        time.sleep(2)
+                                    nowChatList=[]
+                        
+                    else:continue
+                
+                except Exception as e:
+                    print(f"An error occurred for person {person+1}")
+                    continue        
+                    
+                            
             for x in chatwithhashtag:
                 print(x)
         except Exception as e :
             print(e)
     
     
-    
-    
 username = ""
 password = ""
 hashtag=""
 
-while username == "" and password == "":
+while username == "" and password == "" and hashtag==""and kisi=="":
     username = input("username: ")
     password = input("password: ")
     hashtag = input("hashtag: ")
-    
+    kisi=int(input("Arayacağınız chat sayısı: "))
 
 lkn=LinkedIn(username,password)
 lkn.signIn()
