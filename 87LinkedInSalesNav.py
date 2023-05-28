@@ -100,7 +100,7 @@ class LinkedIn:
 username = ""
 password = ""
 hashtag=""
-
+kisi=""
 while username == "" and password == "" and hashtag==""and kisi=="":
     username = input("username: ")
     password = input("password: ")
@@ -109,4 +109,4 @@ while username == "" and password == "" and hashtag==""and kisi=="":
 
 lkn=LinkedIn(username,password)
 lkn.signIn()
-lkn.searchMessage(hashtag,kisi)
+lkn.searchMessage(hashtag,int(kisi))
