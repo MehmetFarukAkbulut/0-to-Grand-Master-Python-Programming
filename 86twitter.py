@@ -74,10 +74,13 @@ class Twitter:
                         tweet_list.append(tweet)
                 
                 time.sleep(2)
-                
-            for tweet_text in tweet_texts:
-                print("***********************************")
-                print(tweet_text)
+            count=1   
+            with open("86.tweets.txt","w",encoding="UTF-8") as file: 
+                for tweet_text in tweet_texts:
+                    print("***********************************")
+                    print(tweet_text)
+                    file.write(f"{count}-{tweet_text}\n")
+                    count+=1
             
         except Exception as e:
             print(e)
