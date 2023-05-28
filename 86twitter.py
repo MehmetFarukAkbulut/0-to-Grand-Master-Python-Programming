@@ -88,9 +88,6 @@ username = ""
 password = ""
 hashtag=""
 
-username="MFA_FARUK_MFA"
-password="Mfa134780:*"
-hashtag="python"
 while username == "" and password == "" and hashtag=="":
     username = input("username: ")
     password = input("password: ")
