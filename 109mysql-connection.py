@@ -5,5 +5,10 @@ mydb=mysql.connector.connect(
     user="root",
     password="SQL1234"
 )
+mycursor=mydb.cursor()
 
-print(mydb)
+mycursor.execute("SHOW DATABASES")
+# mycursor.execute("CREATE DATABASE mydatabase")
+
+for x in mycursor:
+    print(x)
