@@ -21,7 +21,6 @@ connection=mysql.connector.connect(
     password="SQL1234",
     database="schooldb"
 )
-
 mycursor=connection.cursor()
 
 sql="INSERT INTO Student(StudentNumber,Name,Surname,Birthdate,Gender) VALUES (%s,%s,%s,%s,%s)" 
