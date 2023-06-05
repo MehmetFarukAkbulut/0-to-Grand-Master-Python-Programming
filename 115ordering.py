@@ -73,4 +73,22 @@ def getProductById(id):
     
     print(f"id: {result[0]} name: {result[1]} price: {result[2]}")
 
-getProducts()
+def getProductInfo():
+    connection=mysql.connector.connect(host="localhost",user="root",password="SQL1234",database="sys")
+    cursor=connection.cursor()
+    
+    # sql="Select COUNT(*) From Products"
+    # sql="Select AVG(Price) From Products"
+    # sql="Select SUM(Price) From Products"
+    # sql="Select MAX(Price) From Products"
+    # sql="Select MIN(Price) From Products"
+    sql="Select Name,Price From Products Where Price= (Select MAX(Price) From Products)"
+
+    cursor.execute(sql)
+    
+    
+    result=cursor.fetchone()
+    
+    print(f"result: {result[0]} {result[1]} ")
+
+getProductInfo()
