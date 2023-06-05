@@ -44,7 +44,9 @@ def getProducts():
     cursor=connection.cursor()
     
     # cursor.execute("Select * From Products Where id=1")
-    cursor.execute("Select * From Products Where name='Samsung S8'")
+    # cursor.execute("Select * From Products Where name='Samsung S8'")
+    # cursor.execute("Select * From Products Where name='Samsung S8' and price>=3000 ")
+    cursor.execute("Select * From Products Where name='Samsung S8' or price>=3000 ")
     
     
     result=cursor.fetchall()
