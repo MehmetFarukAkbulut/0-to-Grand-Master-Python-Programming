@@ -43,13 +43,23 @@ def getProducts():
     connection=mysql.connector.connect(host="localhost",user="root",password="SQL1234",database="sys")
     cursor=connection.cursor()
     
-    cursor.execute("Select * From Products Order By name")
+    # cursor.execute("Select * From Products Order By name")
+    # cursor.execute("Select * From Products Order By price")
+    # cursor.execute("Select * From Products Order By price DESC")
+    # cursor.execute("Select * From Products Order By id DESC")
+    cursor.execute("Select * From Products Order By price, name")
     
-    result=cursor.fetchall()
+    try:
+        result=cursor.fetchall()
+        for product in result:
+            print(f"id: {product[0]} name: {product[1]} price: {product[2]}")
+    except mysql.connector.Error as err:
+        print("Hata: ",err)
+    finally:
+        connection.close()
+        print("database bağlantısı kapandı")
     
-    for product in result:
-        # print(f"name: {product[1]} price: {product[2]}")
-        print(f"id: {product[0]} name: {product[1]} price: {product[2]}")
+
     
 def getProductById(id):
     connection=mysql.connector.connect(host="localhost",user="root",password="SQL1234",database="sys")
