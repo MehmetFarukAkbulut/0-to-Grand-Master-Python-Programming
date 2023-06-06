@@ -122,6 +122,21 @@ class Student:
                 print("Error",err)
 
     @staticmethod
+    def updateStudents(liste):
+        sql="update student set studentnumber=%s,name=%s,surname=%s,birthdate=%s,gender=%s where id=%s"     
+        values=[]
+        order=[1,2,3,4,5,0]
+        for item in liste:
+            item=[item[i] for i in order]
+            values.append(item) 
+        Student.mycursor.executemany(sql,values)
+        try:
+            Student.connection.commit()
+            print(f'{Student.mycursor.rowcount} tane kayıt güncellendi')
+        except mysql.connector.Error as err:
+                print("Error",err)
+
+    @staticmethod
     def getsStudentsGender(gender):
             sql="select * from student where gender=%s"
             value=(gender,)
@@ -133,7 +148,8 @@ class Student:
             
             except mysql.connector.Error as err:
                 print("Error",err)
-                
+
+
 # student=Student.getsStudentById(7)
 
 # student.name='Mehmet'
@@ -142,3 +158,12 @@ class Student:
 
 students=Student.getsStudentsGender('E')
 print(students)
+
+liste=[]
+
+for std in students:
+    std=list(std)
+    std[2]='Mr '+ std[2]
+    liste.append(std)
+    
+Student.updateStudents(liste)
