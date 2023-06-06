@@ -99,7 +99,7 @@ def updateProduct():
     cursor.execute(sql)
     try:    
         connection.commit()
-        print(f"{cursor.rowcount} tane kayıt eklendi")
+        print(f"{cursor.rowcount} tane kayıt güncellendi")
     except mysql.connector.Error as err:
         print("Hata: ",err)
     finally:
