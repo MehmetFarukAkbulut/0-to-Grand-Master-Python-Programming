@@ -106,4 +106,4 @@ def updateProduct():
         connection.close()
         print("database bağlantısı kapandı")
     
-    updateProduct()
+updateProduct()
