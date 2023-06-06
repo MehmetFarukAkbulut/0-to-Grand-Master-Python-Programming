@@ -106,12 +106,14 @@ def updateProduct(id, name,price):
     finally:
         connection.close()
         print("database bağlantısı kapandı")
-def deleteProduct():
+def deleteProduct(id):
     connection=mysql.connector.connect(host="localhost",user="root",password="SQL1234",database="sys")
     cursor=connection.cursor()
-    sql="Delete from products where id=3 "
- 
-    cursor.execute(sql)
+    # sql="Delete from products where id=3 "
+    # sql="Delete from products where name like '%S10%' "
+    sql="Delete from products where id=%s "
+    values=(id,)
+    cursor.execute(sql,values)
     try:    
         connection.commit()
         print(f"{cursor.rowcount} tane kayıt silindi")
@@ -121,5 +123,5 @@ def deleteProduct():
         connection.close()
         print("database bağlantısı kapandı")
     
-# deleteProduct()
+# deleteProduct(5)
 getProducts()
