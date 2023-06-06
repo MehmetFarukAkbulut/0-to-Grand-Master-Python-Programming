@@ -91,12 +91,13 @@ def getProductInfo():
     
     print(f"result: {result[0]} {result[1]} ")
 
-def updateProduct():
+def updateProduct(id, name,price):
     connection=mysql.connector.connect(host="localhost",user="root",password="SQL1234",database="sys")
     cursor=connection.cursor()
-    sql="Update products Set name='Samsung S7', price=10000 where id=2 "
+    sql="Update products Set name=%s, price=%s where id=%s "
+    values=(name,price,id)
  
-    cursor.execute(sql)
+    cursor.execute(sql,values)
     try:    
         connection.commit()
         print(f"{cursor.rowcount} tane kayıt güncellendi")
@@ -106,5 +107,5 @@ def updateProduct():
         connection.close()
         print("database bağlantısı kapandı")
     
-updateProduct()
+updateProduct(1,"Samsung S6",5000)
 getProducts()
