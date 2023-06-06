@@ -94,7 +94,7 @@ def getProductInfo():
 def updateProduct():
     connection=mysql.connector.connect(host="localhost",user="root",password="SQL1234",database="sys")
     cursor=connection.cursor()
-    sql="Update products Set name='Samsung S10' where id=5 "
+    sql="Update products Set name='Samsung S7', price=10000 where id=2 "
  
     cursor.execute(sql)
     try:    
