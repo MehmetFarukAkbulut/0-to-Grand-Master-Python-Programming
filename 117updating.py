@@ -107,3 +107,4 @@ def updateProduct():
         print("database bağlantısı kapandı")
     
 updateProduct()
+getProducts()
