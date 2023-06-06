@@ -156,14 +156,14 @@ class Student:
 # student.surname='Çetin'
 # student.updateStudent()
 
-students=Student.getsStudentsGender('E')
+students=Student.getsStudentsGender('K')
 print(students)
 
 liste=[]
 
 for std in students:
     std=list(std)
-    std[2]='Mr '+ std[2]
+    std[2]='Mrs '+ std[2]
     liste.append(std)
     
 Student.updateStudents(liste)
