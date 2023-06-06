@@ -128,7 +128,7 @@ class Student:
     
     @staticmethod
     def StudentInfo():
-        # sql="Select * from student limit 5"
+        sql="Select * from student limit 5"
         # sql="Select * from student"
         # sql="Select studentnumber,name,surname from student"
         # sql="Select studentnumber,name,surname from student where gender='K'"
