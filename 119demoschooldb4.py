@@ -107,7 +107,8 @@ class Student:
             Student.mycursor.execute(sql,value)
             
             try:
-                return Student.mycursor.fetchone()
+                obj= Student.mycursor.fetchone()
+                return Student(obj[0],obj[1],obj[2],obj[3],obj[4],obj[5])
             except mysql.connector.Error as err:
                 print("Error",err)
     def updateStudent(self):
@@ -119,9 +120,25 @@ class Student:
             print(f'{Student.mycursor.rowcount} tane kayıt güncellendi')
         except mysql.connector.Error as err:
                 print("Error",err)
-obj=Student.getsStudentById(7)
 
-student= Student(obj[0],obj[1],obj[2],obj[3],obj[4],obj[5])
-student.name='Mehmet'
-student.surname='Çetin'
-student.updateStudent()
+    @staticmethod
+    def getsStudentsGender(gender):
+            sql="select * from student where gender=%s"
+            value=(gender,)
+            
+            Student.mycursor.execute(sql,value)
+            
+            try:
+                return Student.mycursor.fetchall()
+            
+            except mysql.connector.Error as err:
+                print("Error",err)
+                
+# student=Student.getsStudentById(7)
+
+# student.name='Mehmet'
+# student.surname='Çetin'
+# student.updateStudent()
+
+students=Student.getsStudentsGender('E')
+print(students)
