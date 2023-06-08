@@ -59,6 +59,8 @@ db=DbManager()
 student=db.getStudentsById(7)
 
 student[0].name="Mehmet"
+student[0].surname="Çakmak"
+student[0].studentNumber="314"
 
 # db.addStudent(student[0])   
 db.editStudent(student[0])   
