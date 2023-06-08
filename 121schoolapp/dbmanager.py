@@ -39,7 +39,15 @@ class DbManager:
             print("Hata: ",err)
 
     def editStudent(self,student: Student):
-        pass
+        sql="update student set studentnumber=%s,name=%s,surname=%s,birthdate=%s,gender=%s,classid=%s where id=%s" 
+        value=(student.studentNumber,student.name,student.surname,student.birthdate,student.gender,student.classid,student.id)
+        self.cursor.execute(sql,value)
+        
+        try:
+            self.connection.commit()
+            print(f"{self.cursor.rowcount} tane kayıt güncellendi.")
+        except mysql.connector.Error as err:
+            print("Hata: ",err)
 
     def addTeacher(self,teacher: Teacher):
         pass
@@ -50,11 +58,10 @@ class DbManager:
 db=DbManager()
 student=db.getStudentsById(7)
 
-student[0].name="Faruk"
-student[0].surname="Akbulut"
-student[0].studentNumber="612"
+student[0].name="Mehmet"
 
-db.addStudent(student[0])   
+# db.addStudent(student[0])   
+db.editStudent(student[0])   
 
 # students=db.getStudentsByClassId(1)
 # print(students[0].name)   
