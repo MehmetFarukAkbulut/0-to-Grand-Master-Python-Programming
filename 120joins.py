@@ -42,8 +42,14 @@ def insertProducts(list):
 def getProducts():
     connection=mysql.connector.connect(host="localhost",user="root",password="SQL1234",database="sys")
     cursor=connection.cursor()
-    sql="Select * From Products"
     # sql="Select * From Products Order By price, name"
+    # sql="Select * From Products"
+    # sql="Select * From Categories"
+    # sql="Select * From Products P inner join Categories C on C.id=P.Categoryid "
+    # sql="Select P.name,P.price,C.name From Products P inner join Categories C on C.id=P.Categoryid "
+    # sql="Select P.name,P.price,C.name From Products P inner join Categories C on C.id=P.Categoryid where C.name='Telefon'"
+    sql="Select P.name,P.price,C.name From Products P inner join Categories C on C.id=P.Categoryid where P.name='Samsung Galaxy A54'"
+    
     
     # cursor.execute("Select * From Products Order By name")
     # cursor.execute("Select * From Products Order By price")
