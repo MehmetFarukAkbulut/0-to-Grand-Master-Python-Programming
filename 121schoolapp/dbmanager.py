@@ -15,7 +15,7 @@ class DbManager:
         self.cursor.execute(sql,value)
         try:
             obj=self.cursor.fetchone()
-            return Student(obj[0],obj[1],obj[2],obj[3],obj[4],obj[5],obj[6],)
+            return Student.CreateStudent(obj)
         except mysql.connector.Error as err:
             print("Error: ",err)
     def getStudentsByClassId(self,classid):
@@ -24,8 +24,7 @@ class DbManager:
         self.cursor.execute(sql,value)
         try:
             obj=self.cursor.fetchall()
-            print(obj)
-            # return Student(obj[0],obj[1],obj[2],obj[3],obj[4],obj[5],obj[6],)
+            return Student.CreateStudent(obj)           
         except mysql.connector.Error as err:
             print("Error: ",err)
     def addStudent(self,student: Student):
@@ -42,7 +41,9 @@ class DbManager:
         
 db=DbManager()
 # student=db.getStudentsById(7)
-# print(student.name)   
-# print(student.surname)   
+# print(student[0].name)   
+# print(student[0].surname)   
 
 students=db.getStudentsByClassId(1)
+print(students[0].name)   
+print(students[4].surname) 
