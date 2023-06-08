@@ -27,6 +27,12 @@ class DbManager:
             return Student.CreateStudent(obj)           
         except mysql.connector.Error as err:
             print("Error: ",err)
+    def addorEditStudent(self,student: Student):
+        if student.id == 0:
+            self.addStudent(student)
+        else:
+            self.editStudent(student)  
+    
     def addStudent(self,student: Student):
         sql="INSERT INTO Student(StudentNumber,Name,Surname,Birthdate,Gender,ClassId) VALUES (%s,%s,%s,%s,%s,%s)" 
         value=(student.studentNumber,student.name,student.surname,student.birthdate,student.gender,student.classid)
@@ -54,16 +60,25 @@ class DbManager:
 
     def editTeacher(self,teacher: Teacher):
         pass
+    
+    def __del__(self):
+        self.connection.close()
+        print("db kapandı")
         
+    
+    
 db=DbManager()
-student=db.getStudentsById(7)
-
-student[0].name="Mehmet"
-student[0].surname="Çakmak"
-student[0].studentNumber="314"
+student=db.getStudentsById(19)
+# student[0].id=0
+# student[0].name="Faruk"
+# student[0].surname="Hoş"
+# student[0].studentNumber="715"
+student[0].name="Mustafa"
+# student[0].surname="Yılmaz"
 
 # db.addStudent(student[0])   
-db.editStudent(student[0])   
+# db.editStudent(student[0])   
+db.addorEditStudent(student[0])   
 
 # students=db.getStudentsByClassId(1)
 # print(students[0].name)   
