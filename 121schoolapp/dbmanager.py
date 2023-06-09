@@ -2,6 +2,7 @@ import mysql.connector
 from datetime import datetime
 from connection import connection
 from Student import Student
+from Class import Class
 from Teacher import Teacher
 
 class DbManager:
@@ -18,6 +19,26 @@ class DbManager:
             return Student.CreateStudent(obj)
         except mysql.connector.Error as err:
             print("Error: ",err)
+    
+    def deleteStudent(self,studentid):
+        sql="delete from student where id=%s"
+        value=(studentid,)
+        self.cursor.execute(sql,value)
+        try:
+            self.connection.commit()
+            print(f"{self.cursor.rowcount} tane kayıt silindi.")
+        except mysql.connector.Error as err:
+            print("Hata: ",err)
+    
+    def getClasses(self):
+        sql="select * from class"
+        self.cursor.execute(sql)
+        try:
+            obj=self.cursor.fetchall()
+            return Class.CreateClass(obj)           
+        except mysql.connector.Error as err:
+            print("Error: ",err)
+    
     def getStudentsByClassId(self,classid):
         sql="select * from student where classid=%s"
         value=(classid,)
