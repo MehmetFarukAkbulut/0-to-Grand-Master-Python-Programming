@@ -42,7 +42,7 @@ class Ui_MainWindow(object):
         self.btn_carpma.setObjectName("btn_carpma")
         self.lbl_sonuc = QtWidgets.QLabel(self.centralwidget)
         self.lbl_sonuc.setGeometry(QtCore.QRect(110, 200, 121, 21))
-        self.lbl_sonuc.setObjectName("lbl_sonuc")
+        self.lbl_sonuc.setObjectName("lbl_sonuc") 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 494, 18))
