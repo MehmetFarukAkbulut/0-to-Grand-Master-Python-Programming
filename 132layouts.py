@@ -18,15 +18,29 @@ class MainWindow(QMainWindow):
         self.setGeometry(100,100,500,500)
         
         # layout=QtWidgets.QVBoxLayout()
-        layout=QtWidgets.QHBoxLayout()
         
-        layout.addWidget(Color('red'))
-        layout.addWidget(Color('blue'))
-        layout.addWidget(Color('green'))
-        layout.addWidget(Color('yellow'))
+        # layout.addWidget(Color('red'))
+        # layout.addWidget(Color('blue'))
+        # layout.addWidget(Color('green'))
+        # layout.addWidget(Color('yellow'))
+        
+        hlayout1=QtWidgets.QHBoxLayout()
+        hlayout1.addWidget(Color('red'))
+        hlayout1.addWidget(Color('blue'))
+        hlayout1.addWidget(Color('green'))
+        
+        hlayout2=QtWidgets.QHBoxLayout()
+        hlayout2.addWidget(Color('red'))
+        hlayout2.addWidget(Color('green'))
+        
+        vlayout=QtWidgets.QVBoxLayout()
+        vlayout.addLayout(hlayout1)
+        vlayout.addLayout(hlayout2)
+        
+
         
         widget=QWidget()
-        widget.setLayout(layout)
+        widget.setLayout(vlayout)
         
         
         self.setCentralWidget(widget)
