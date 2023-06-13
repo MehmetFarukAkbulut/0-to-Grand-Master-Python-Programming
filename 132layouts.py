@@ -24,23 +24,28 @@ class MainWindow(QMainWindow):
         # layout.addWidget(Color('green'))
         # layout.addWidget(Color('yellow'))
         
-        hlayout1=QtWidgets.QHBoxLayout()
-        hlayout1.addWidget(Color('red'))
-        hlayout1.addWidget(Color('blue'))
-        hlayout1.addWidget(Color('green'))
+        # hlayout1=QtWidgets.QHBoxLayout()
+        # hlayout1.addWidget(Color('red'))
+        # hlayout1.addWidget(Color('blue'))
+        # hlayout1.addWidget(Color('green'))
         
-        hlayout2=QtWidgets.QHBoxLayout()
-        hlayout2.addWidget(Color('red'))
-        hlayout2.addWidget(Color('green'))
+        # hlayout2=QtWidgets.QHBoxLayout()
+        # hlayout2.addWidget(Color('red'))
+        # hlayout2.addWidget(Color('green'))
         
-        vlayout=QtWidgets.QVBoxLayout()
-        vlayout.addLayout(hlayout1)
-        vlayout.addLayout(hlayout2)
+        # vlayout=QtWidgets.QVBoxLayout()
+        # vlayout.addLayout(hlayout1)
+        # vlayout.addLayout(hlayout2)
         
-
+        layout=QtWidgets.QGridLayout()
+        
+        layout.addWidget(Color('red'),0,0)
+        layout.addWidget(Color('blue'),1,0)
+        layout.addWidget(Color('green'),0,2)
+        layout.addWidget(Color('yellow'),3,1)
         
         widget=QWidget()
-        widget.setLayout(vlayout)
+        widget.setLayout(layout)
         
         
         self.setCentralWidget(widget)
