@@ -17,7 +17,8 @@ class MainWindow(QMainWindow):
         super(MainWindow,self).__init__()
         self.setGeometry(100,100,500,500)
         
-        layout=QtWidgets.QVBoxLayout()
+        # layout=QtWidgets.QVBoxLayout()
+        layout=QtWidgets.QHBoxLayout()
         
         layout.addWidget(Color('red'))
         layout.addWidget(Color('blue'))
