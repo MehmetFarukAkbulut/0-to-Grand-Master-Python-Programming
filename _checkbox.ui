@@ -6,72 +6,157 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>731</width>
-    <height>524</height>
+    <width>698</width>
+    <height>574</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btnSecilenleriAl">
+   <widget class="QPushButton" name="btnHobilerSecilenleriAl">
     <property name="geometry">
      <rect>
-      <x>94</x>
-      <y>222</y>
+      <x>100</x>
+      <y>290</y>
       <width>151</width>
-      <height>41</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
      <string>Seçilenleri Al</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblResult">
+   <widget class="QLabel" name="lblResultHobiler">
     <property name="geometry">
      <rect>
-      <x>326</x>
-      <y>52</y>
+      <x>40</x>
+      <y>350</y>
       <width>281</width>
-      <height>161</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QGroupBox" name="groupHobiler">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>40</y>
-      <width>161</width>
-      <height>171</height>
+      <x>40</x>
+      <y>20</y>
+      <width>271</width>
+      <height>261</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QCheckBox" name="cbSinema">
-       <property name="text">
-        <string>Sinema</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="cbKitap">
-       <property name="text">
-        <string>Kitap Okumak</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="cbSpor">
-       <property name="text">
-        <string>Spor</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="title">
+     <string>Hobiler</string>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>161</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QCheckBox" name="cbSinema">
+        <property name="text">
+         <string>Sinema</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="cbKitap">
+        <property name="text">
+         <string>Kitap Okumak</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="cbSpor">
+        <property name="text">
+         <string>Spor</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupDersler">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>20</y>
+      <width>271</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Dersler</string>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>161</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QCheckBox" name="cbWebTasarm">
+        <property name="text">
+         <string>Web Tasarım</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="cbProgramlama">
+        <property name="text">
+         <string>Programlama</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="cbMatematik">
+        <property name="text">
+         <string>Matematik</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="btnDerslerSecilenleriAl">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>290</y>
+      <width>151</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Seçilenleri Al</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblResultDersler">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>350</y>
+      <width>281</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -79,7 +164,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>731</width>
+     <width>698</width>
      <height>21</height>
     </rect>
    </property>
