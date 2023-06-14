@@ -56,5 +56,5 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.btnSecilenleriAl.setText(_translate("MainWindow", "Seçilenleri Al"))
         self.cbSinema.setText(_translate("MainWindow", "Sinema"))
-        self.cbKitap.setText(_translate("MainWindow", "Kitap Okymak"))
+        self.cbKitap.setText(_translate("MainWindow", "Kitap Okumak"))
         self.cbSpor.setText(_translate("MainWindow", "Spor"))

@@ -60,7 +60,7 @@
      <item>
       <widget class="QCheckBox" name="cbKitap">
        <property name="text">
-        <string>Kitap Okymak</string>
+        <string>Kitap Okumak</string>
        </property>
       </widget>
      </item>
