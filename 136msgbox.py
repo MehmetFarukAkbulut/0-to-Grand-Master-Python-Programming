@@ -37,6 +37,7 @@ class Window(QtWidgets.QMainWindow):
         
         if i.text()=='OK':
             print('OKEY...')
+            QtWidgets.qApp.quit()
         elif i.text()=='Cancel':
             print('Cancel...')
         elif i.text()=='Ignore':
