@@ -16,32 +16,41 @@ class Window(QtWidgets.QMainWindow):
         self.ui.btnExit.clicked.connect(self.showDialog)
 
     def showDialog(self):
-        msg=QMessageBox()
-        msg.setWindowTitle('Close Application')
-        msg.setGeometry(450,450,500,500)
-        
-        msg.setText('Are you sure?')
-        # msg.setIcon(QMessageBox.Question)
-        msg.setIcon(QMessageBox.Warning)
-        msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Ignore | QMessageBox.Cancel)
-        msg.setDefaultButton(QMessageBox.Cancel)
-        msg.setDetailedText('details...')
-        msg.buttonClicked.connect(self.popup_button)
-        
-        x=msg.exec_()
-        print(x)
-        
-        
-    def popup_button(self,i):
-        print(i.text())
-        
-        if i.text()=='OK':
-            print('OKEY...')
+        result=QMessageBox.question(self,'Close Application','Are you sure?',QMessageBox.Ok | QMessageBox.Ignore | QMessageBox.Cancel,QMessageBox.Cancel)
+        if result==QMessageBox.Ok:
+            print('Yes clicked')
             QtWidgets.qApp.quit()
-        elif i.text()=='Cancel':
-            print('Cancel...')
-        elif i.text()=='Ignore':
-            print('Ignore...')
+        else:
+            print('No clicked')
+            
+
+
+    #     msg=QMessageBox()
+    #     msg.setWindowTitle('Close Application')
+    #     msg.setGeometry(450,450,500,500)
+        
+    #     msg.setText('Are you sure?')
+    #     # msg.setIcon(QMessageBox.Question)
+    #     msg.setIcon(QMessageBox.Warning)
+    #     msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Ignore | QMessageBox.Cancel)
+    #     msg.setDefaultButton(QMessageBox.Cancel)
+    #     msg.setDetailedText('details...')
+    #     msg.buttonClicked.connect(self.popup_button)
+        
+    #     x=msg.exec_()
+    #     print(x)
+        
+        
+    # def popup_button(self,i):
+    #     print(i.text())
+        
+    #     if i.text()=='OK':
+    #         print('OKEY...')
+    #         QtWidgets.qApp.quit()
+    #     elif i.text()=='Cancel':
+    #         print('Cancel...')
+    #     elif i.text()=='Ignore':
+    #         print('Ignore...')
     
 app=QtWidgets.QApplication(sys.argv)
 win=Window()
