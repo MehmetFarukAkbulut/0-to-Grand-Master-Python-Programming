@@ -24,10 +24,23 @@ class Window(QtWidgets.QMainWindow):
         # msg.setIcon(QMessageBox.Question)
         msg.setIcon(QMessageBox.Warning)
         msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Ignore | QMessageBox.Cancel)
-        msg.setDefaultButton(QMessageBox.Ignore)
-        x=msg.exec_()
+        msg.setDefaultButton(QMessageBox.Cancel)
+        msg.setDetailedText('details...')
+        msg.buttonClicked.connect(self.popup_button)
         
-    
+        x=msg.exec_()
+        print(x)
+        
+        
+    def popup_button(self,i):
+        print(i.text())
+        
+        if i.text()=='OK':
+            print('OKEY...')
+        elif i.text()=='Cancel':
+            print('Cancel...')
+        elif i.text()=='Ignore':
+            print('Ignore...')
     
 app=QtWidgets.QApplication(sys.argv)
 win=Window()
