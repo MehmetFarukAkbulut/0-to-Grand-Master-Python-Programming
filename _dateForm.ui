@@ -40,7 +40,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btnCalculate">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -64,7 +64,7 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QDateEdit" name="dateEdit">
+      <widget class="QDateEdit" name="dateStart">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -93,7 +93,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QDateEdit" name="dateEdit_2">
+      <widget class="QDateEdit" name="dateEnd">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
          <horstretch>0</horstretch>
