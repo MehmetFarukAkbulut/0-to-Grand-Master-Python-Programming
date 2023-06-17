@@ -77,6 +77,20 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="btnIndexUp">
+       <property name="text">
+        <string>Index Up</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnIndexDown">
+       <property name="text">
+        <string>Index Down</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
