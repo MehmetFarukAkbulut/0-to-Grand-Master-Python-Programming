@@ -1,6 +1,6 @@
 import sys
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QInputDialog
+from PyQt5.QtWidgets import QInputDialog,QLineEdit
 from listForm import Ui_MainWindow
 
 class Window(QtWidgets.QMainWindow):
@@ -30,8 +30,13 @@ class Window(QtWidgets.QMainWindow):
         if ok and text is not None:
             self.ui.listItems.insertItem(currentIndex,text)
     def editStudent(self):
-        pass
+        index=currentIndex=self.ui.listItems.currentRow()
+        item=self.ui.listItems.item(index)
         
+        if item is not None:
+            text,ok=QInputDialog.getText(self,"Edit Student","Student Name",QLineEdit.Normal,item.text())
+            if text and ok is not None:
+                item.setText(text)
     def removeStudent(self):
         pass
         
