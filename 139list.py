@@ -1,6 +1,6 @@
 import sys
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QInputDialog,QLineEdit
+from PyQt5.QtWidgets import QInputDialog,QLineEdit,QMessageBox
 from listForm import Ui_MainWindow
 
 class Window(QtWidgets.QMainWindow):
@@ -16,9 +16,11 @@ class Window(QtWidgets.QMainWindow):
         self.ui.btnAdd.clicked.connect(self.addStudent)
         self.ui.btnEdit.clicked.connect(self.editStudent)
         self.ui.btnRemove.clicked.connect(self.removeStudent)
+        self.ui.btnIndexUp.clicked.connect(self.indexUp)
+        self.ui.btnIndexDown.clicked.connect(self.indexDown)
         self.ui.btnUp.clicked.connect(self.upStudent)
         self.ui.btnDown.clicked.connect(self.downStudent)
-        self.ui.btnSort.clicked.connect(self.sortStudent)
+        self.ui.btnSort.clicked.connect(self.sortStudents)
         self.ui.btnExit.clicked.connect(self.exitStudent)
 
     def loadStudents(self):
@@ -30,7 +32,7 @@ class Window(QtWidgets.QMainWindow):
         if ok and text is not None:
             self.ui.listItems.insertItem(currentIndex,text)
     def editStudent(self):
-        index=currentIndex=self.ui.listItems.currentRow()
+        index=self.ui.listItems.currentRow()
         item=self.ui.listItems.item(index)
         
         if item is not None:
@@ -38,19 +40,60 @@ class Window(QtWidgets.QMainWindow):
             if text and ok is not None:
                 item.setText(text)
     def removeStudent(self):
-        pass
+        index=self.ui.listItems.currentRow()
+        item=self.ui.listItems.item(index)
+        if item is None:
+            return
+        q=QMessageBox.question(self,"Remove Student","Do you want to remove student: "+item.text(),QMessageBox.Yes | QMessageBox.No) 
+        if q==QMessageBox.Yes:
+            item=self.ui.listItems.takeItem(index)
+            del item
+    
+    def indexUp(self):
+        #seçili studentın üstündeki studentı seç
+        index=self.ui.listItems.currentRow()
+        item=self.ui.listItems.item(index)
+        if item is None:
+            return
+        if index == 0:
+            return
+        self.ui.listItems.setCurrentRow(index-1)        
+        
+    def indexDown(self):
+        #seçili studentın altındaki studentı seç 
+        index=self.ui.listItems.currentRow()
+        item=self.ui.listItems.item(index)
+        c=self.ui.listItems.count()-1
+        if item is None:
+            return
+        if index == c:
+            return
+        self.ui.listItems.setCurrentRow(index+1)
         
     def upStudent(self):
-        pass
-        
+
+        index=self.ui.listItems.currentRow()
+        if index>=1:
+            item=self.ui.listItems.takeItem(index)
+            self.ui.listItems.insertItem(index-1,item)
+            self.ui.listItems.setCurrentItem(item)
+
     def downStudent(self):
-        pass
+
+        index=self.ui.listItems.currentRow()
+        if index<=self.ui.listItems.count()-1:
+            item=self.ui.listItems.takeItem(index)
+            self.ui.listItems.insertItem(index+1,item)
+            self.ui.listItems.setCurrentItem(item)
+
         
-    def sortStudent(self):
-        pass
+        
+    def sortStudents(self):
+        self.ui.listItems.sortItems()
+        
         
     def exitStudent(self):
-        pass
+        quit()
         
         
 app=QtWidgets.QApplication(sys.argv)
