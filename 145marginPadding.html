@@ -12,13 +12,33 @@
         div{
             width:200px;
             height:200px;
+            display: inline-block;
+            /*
+            margin=> m (0,1,2,3,4,5) m-0,m-1,...,m-5
+            margin-right=> mr
+            margin-left=> ml
+            margin-top=> mt
+            margin-bottom=> mb
+            margin-top,margin-bottom=> my
+            margin-left,margin-right=> mx
+            
+            padding=> p (0,1,2,3,4,5) p-0,p-1,...,p-5
+            padding-right=> r
+            padding-left=> pl
+            padding-top=> pt
+            padding-bottom=> pb
+            padding-top, padding-bottom=> py
+            padding-left,padding-right=>  px
+            */
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-success m-2">first</div>
-    <div class="bg-primary m-5">second</div>
+    <div class="bg-success mx-2">first</div>
+    <div class="bg-primary mt-4">second</div>
+    <div class="bg-primary py-3">third</div>
+    <div class="bg-primary px-2">fourth</div>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
