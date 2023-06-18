@@ -9,36 +9,50 @@
     crossorigin="anonymous">
     <title>Border Sizing</title>
     <style>
-        div{
-            width:200px;
-            height:200px;
-            display: inline-block;
-            /*
-            margin=> m (0,1,2,3,4,5) m-0,m-1,...,m-5
-            margin-right=> mr
-            margin-left=> ml
-            margin-top=> mt
-            margin-bottom=> mb
-            margin-top,margin-bottom=> my
-            margin-left,margin-right=> mx
-            
-            padding=> p (0,1,2,3,4,5) p-0,p-1,...,p-5
-            padding-right=> r
-            padding-left=> pl
-            padding-top=> pt
-            padding-bottom=> pb
-            padding-top, padding-bottom=> py
-            padding-left,padding-right=>  px
-            */
+        .d-inline-block{
+            display:inline-block;
         }
     </style>
 </head>
-<body>
+<body class="p-5">
 
-    <div class="bg-success mx-2">first</div>
-    <div class="bg-primary mt-4">second</div>
-    <div class="bg-primary py-3">third</div>
-    <div class="bg-primary px-2">fourth</div>
+    <div class="bg-light mt-2 p-4 "></div>
+    <div class="bg-light mt-2 p-4 border border"></div>
+    <div class="bg-light mt-2 p-4 border border-top"></div>
+    <div class="bg-light mt-2 p-4 border border-right"></div>
+    <div class="bg-light mt-2 p-4 border border-left"></div>
+    <div class="bg-light mt-2 p-4 border border-bottom"></div>
+    <br><br> 
+    <div class="bg-light mt-2 p-4 border border-0"></div>
+    <div class="bg-light mt-2 p-4 border border-top-0"></div>
+    <div class="bg-light mt-2 p-4 border border-right-0"></div>
+    <div class="bg-light mt-2 p-4 border border-left-0"></div>
+    <div class="bg-light mt-2 p-4 border border-bottom-0"></div>
+    <br><br> 
+    <div class="bg-light mt-2 p-4 border border-primary"></div>
+    <div class="bg-light mt-2 p-4 border border-secondary"></div>
+    <div class="bg-light mt-2 p-4 border border-danger"></div>
+    <br><br> 
+    <div class="bg-light mt-2 p-4 border border-primary rounded"></div>
+    <div class="bg-light mt-2 p-4 border border-primary rounded-top"></div>
+    <div class="bg-light mt-2 p-4 border border-primary rounded-bottom"></div>
+    <br><br> 
+    <div class="bg-success mt-2 p-4 w-25"></div>
+    <div class="bg-success mt-2 p-4 w-50"></div>
+    <div class="bg-success mt-2 p-4 w-75"></div>
+    <div class="bg-success mt-2 p-4 w-100"></div>
+    <br><br> 
+    <div class="bg-warning" style="height:200px;">
+            <div class="bg-primary p-4 d-inline-block h-25"></div>
+            <div class="bg-primary p-4 d-inline-block h-50"></div>
+            <div class="bg-primary p-4 d-inline-block h-75"></div>
+            <div class="bg-primary p-4 d-inline-block h-100"></div>
+    </div>
+    <br><br> 
+    <div class="shadow bg-light mt-5 p-4 "></div>
+    <div class="shadow-sm bg-light mt-5 p-4 "></div>
+    <div class="shadow-lg bg-light mt-5 p-4 "></div>
+    
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
