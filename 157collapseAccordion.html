@@ -16,9 +16,15 @@
 
 <body class="w-75 mx-auto my-4">
     <p>
-    <button type="button" class="btn btn-primary">Button</button>
+    <button type="button" 
+    class="btn btn-primary" 
+    data-toggle="collapse" 
+    data-target="#content">
+    Button</button>
+    <a href="#content" class="btn btn-primary" data-toggle="collapse">Link</a>    
+
     </p>
-    <div>
+    <div id="content" class="collapse">
         <h2>Lorem, ipsum dolor.</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero vitae, sapiente magnam architecto soluta aut quibusdam exercitationem veritatis reiciendis magni numquam sed ad ducimus fugit est nisi odit? Blanditiis, illum?</p>
 
