@@ -61,6 +61,31 @@
             </div>
         </div>
     </div>
+    <br><br>
+    <button id="btnModal" 
+    type="button" 
+    class="btn btn-primary">Open Modal</button>
+    <div class="modal fade" id="myModal3">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal 3.</h4>
+                    <button type="button"
+                    class="close"
+                    data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Lorem ipsum dolor sit amet.
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                    class=" btn btn-danger"
+                    data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
 
@@ -74,6 +99,28 @@
 
 
             $('#myModal2').modal('show');
+            $('#btnModal').click(function(){
+                $('#myModal3').modal('show');
+            });
+            $('#myModal3').on('hide.bs.modal',function(e){
+
+                console.log('hide');
+            });
+            $('#myModal3').on('hidden.bs.modal',function(e){
+
+                console.log('hidden');
+            });
+            $('#myModal3').on('show.bs.modal',function(e){
+
+                console.log('show');
+            });
+            $('#myModal3').on('shown.bs.modal',function(e){
+
+                console.log('shown');
+            });
+
+
+
 
         });
 
