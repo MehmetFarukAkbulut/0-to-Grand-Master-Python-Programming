@@ -37,7 +37,7 @@ def ortalamalari_oku():
 def not_gir():   
     ad=input("Öğrenci Adı: ")
     soyad=input("Öğrenci Soyadı: ")
-    not1=input("not 1: ")
+    not1=input("Not 1: ")
     not2=input("not 2: ")
     not3=input("not 3: ")
     with open("54not_uygulamasi.txt","a",encoding="utf-8") as file:
