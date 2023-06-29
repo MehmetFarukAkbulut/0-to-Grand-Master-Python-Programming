@@ -26,7 +26,7 @@ def not_hesapla(satir):
         harf="FD"
     elif ortalama>=-1 and ortalama<=49:
         harf="FF"
-    else: print("hatalı giriş yaptınız.")
+    else: print("Hatalı giriş yaptınız.")
     
     return ogrenciAdi+ ": "+ harf + "\n"
 
