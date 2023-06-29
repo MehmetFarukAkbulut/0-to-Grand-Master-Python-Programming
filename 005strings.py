@@ -1,7 +1,7 @@
 name="Faruk"
 surname="Akbulut"
 age=23
-greeting="My name is "+name+' '+surname+" and \nI am "+str(age)+" years old"
+greeting="My name is "+name+' '+surname+" and \nI am "+str(age)+" years old."
 # print(greeting)
 # print(greeting[0])
 # print(greeting[2])
