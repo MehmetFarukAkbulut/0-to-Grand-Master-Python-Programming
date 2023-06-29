@@ -39,7 +39,7 @@ def not_gir():
     soyad=input("Öğrenci Soyadı: ")
     not1=input("Not 1: ")
     not2=input("Not 2: ")
-    not3=input("not 3: ")
+    not3=input("Not 3: ")
     with open("54not_uygulamasi.txt","a",encoding="utf-8") as file:
         file.write(ad+" "+soyad+":"+not1+","+not2+","+not3+"\n")
 def not_kayit():
