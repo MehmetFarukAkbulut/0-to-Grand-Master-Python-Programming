@@ -26,7 +26,7 @@ class App:
             elif islem=="E" or islem=="Ç":
                 break
             else:
-                print("yanlış seçim")
+                print("Yanlış seçim")
     
     def deleteStudent(self):
         
