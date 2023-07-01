@@ -84,7 +84,7 @@ class DbManager:
     
     def __del__(self):
         self.connection.close()
-        print("db kapandı")
+        print("Database kapandı")
         
     
     
