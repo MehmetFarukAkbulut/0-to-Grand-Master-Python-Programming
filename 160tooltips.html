@@ -76,6 +76,15 @@
         $('#btnTooltip').on('show.bs.tooltip',function(){
             console.log('show...');
         });
+        $('#btnTooltip').on('shown.bs.tooltip',function(){
+            console.log('shown...');
+        });
+        $('#btnTooltip').on('hide.bs.tooltip',function(){
+            console.log('hide...');
+        });
+        $('#btnTooltip').on('hidden.bs.tooltip',function(){
+            console.log('hidden...');
+        });
     </script>
 
 
