@@ -73,6 +73,9 @@
         function toggleTooltip(){
             $('#btnTooltip').tooltip('toggle');
         }
+        $('#btnTooltip').on('show.bs.tooltip',function(){
+            console.log('show...');
+        });
     </script>
 
 
