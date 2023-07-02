@@ -19,7 +19,8 @@
         Hover over me
     </a>
     <br><br>
-    <button class="btn btn-success" 
+    <button id="btnTooltip" 
+    class="btn btn-success" 
     type="button" 
     data-toggle="tooltip" 
     title="<h3>Header</h3><br><p>Tooltip text</p>"
@@ -53,7 +54,9 @@
         $(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
-
+        function showTooltip(){
+            $('#btnTooltip').tooltip('show');
+        }
     </script>
 
 
