@@ -45,6 +45,15 @@
 
 
     </p>
+    <br><br>
+    <p>
+        <button class="btn btn-warning" type="button" onclick="showTooltip()">Show Tooltip</button>
+        <button class="btn btn-warning" type="button" onclick="hideTooltip()">Hide Tooltip</button>
+        <button class="btn btn-warning" type="button" onclick="toggleTooltip()">Toggle Tooltip</button>
+
+
+
+    </p>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -56,6 +65,13 @@
         });
         function showTooltip(){
             $('#btnTooltip').tooltip('show');
+        }
+
+        function hideTooltip(){
+            $('#btnTooltip').tooltip('hide');
+        }
+        function toggleTooltip(){
+            $('#btnTooltip').tooltip('toggle');
         }
     </script>
 
