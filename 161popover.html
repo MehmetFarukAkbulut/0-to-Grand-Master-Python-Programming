@@ -90,6 +90,22 @@
         function togglePopover(){
             $('#btnPopover').popover('toggle');
         }
+        
+        $('#btnPopover').on('show.bs.popover',function(){
+            console.log('show');
+        });
+
+        $('#btnPopover').on('shown.bs.popover',function(){
+            console.log('shown');
+        });
+
+        $('#btnPopover').on('hide.bs.popover',function(){
+            console.log('hide');
+        });
+
+        $('#btnPopover').on('hidden.bs.popover',function(){
+            console.log('hidden');
+        });
     </script>
 
 </body>
