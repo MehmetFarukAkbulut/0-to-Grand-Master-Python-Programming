@@ -10,7 +10,7 @@
 </head>
 <body>
    
-    
+    {% include 'partials/_navbar.html' %}
     <main>
         <div class="container mt-4">
             {% block content %}
@@ -18,9 +18,7 @@
         </div>
 
     </main>
-
-
-   
+    {% include 'partials/_footer.html' %}
 
 
     <script src="{% static 'js/jquery-3.4.1.min.js' %}" ></script>
