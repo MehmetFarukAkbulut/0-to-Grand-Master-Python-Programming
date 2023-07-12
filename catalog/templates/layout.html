@@ -9,9 +9,28 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
 </head>
 <body>
-    {% block content %}
-    
-    {% endblock %}
+   
+    <header>
+        <div class="navbar navbar-expand-sm bg-primary navbar-dark">
+            <div class="container">
+                <a href="/" class="navbar-brand">Movie App</a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Products</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div> 
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer></footer>
+
+   
+
 
     <script src="{% static 'js/jquery-3.4.1.min.js' %}" ></script>
     <script src="{% static 'js/popper.min.js' %}" ></script>
