@@ -1,5 +1,61 @@
 {% extends 'layout.html' %}
+{% load static %}
+
 
 {% block content %}
-    <h1>Movies</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img class="card-img" src="{% static 'img/1.jpg' %}" alt="">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <div class="card-title">Shazam!</div>
+                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <p class="card-text">
+                                <small class="text-muted">3 days ago</small>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img class="card-img" src="{% static 'img/2.jpg' %}" alt="">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <div class="card-title">Amazing Grace</div>
+                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <p class="card-text">
+                                <small class="text-muted">3 days ago</small>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img class="card-img" src="{% static 'img/3.jpg' %}" alt="">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <div class="card-title">High Life</div>
+                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <p class="card-text">
+                                <small class="text-muted">3 days ago</small>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
