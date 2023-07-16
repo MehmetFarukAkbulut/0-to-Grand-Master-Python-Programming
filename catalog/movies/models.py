@@ -10,4 +10,4 @@ class Movie(models.Model):
     
     
     def __str__(self):
-        return self.created_date
+        return self.name
