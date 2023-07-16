@@ -8,6 +8,7 @@ class MovieAdmin(admin.ModelAdmin):
     list_filter= ('created_date',)
     list_editable= ('isPublished',)
     search_fields=('name','description')
+    list_per_page=20
     
 
 
