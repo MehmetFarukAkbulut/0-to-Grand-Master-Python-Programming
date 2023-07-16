@@ -7,6 +7,7 @@ class MovieAdmin(admin.ModelAdmin):
     list_display_links= ('id','name')
     list_filter= ('created_date',)
     list_editable= ('isPublished',)
+    search_fields=('name','description')
     
 
 
