@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 {% load static %}
+{% load humanize %}
 
 
 {% block content %}
@@ -27,7 +28,7 @@
                                     <div class="card-title">{{movie.name}}</div>
                                     <p class="card-text">{{movie.description}}</p>
                                     <p class="card-text">
-                                        <small class="text-muted">{{movie.created_date}}</small>
+                                        <small class="text-muted">{{movie.created_date | naturaltime }}</small>
                                     </p>
                                 </div>
                             </div>
