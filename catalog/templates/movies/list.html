@@ -4,7 +4,6 @@
 
 {% block content %}
 
-{{name}}
 
 
 <div class="jumbotron jumbotron-fluid">
@@ -16,57 +15,37 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card mb-3">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img class="card-img" src="{% static 'img/1.jpg' %}" alt="">
-                    </div>
-                    <div class="col-md-9">
-                        <div class="card-body">
-                            <div class="card-title">Shazam!</div>
-                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <p class="card-text">
-                                <small class="text-muted">3 days ago</small>
-                            </p>
+            {% if movies %}
+                {% for movie in movies %}
+                    <div class="card mb-3">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img class="card-img" src="{% static 'img/1.jpg' %}" alt="">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card-body">
+                                    <div class="card-title">Shazam!</div>
+                                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">3 days ago</small>
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+                {% endfor %}
 
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img class="card-img" src="{% static 'img/2.jpg' %}" alt="">
-                    </div>
-                    <div class="col-md-9">
-                        <div class="card-body">
-                            <div class="card-title">Amazing Grace</div>
-                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <p class="card-text">
-                                <small class="text-muted">3 days ago</small>
-                            </p>
-                        </div>
-                    </div>
 
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img class="card-img" src="{% static 'img/3.jpg' %}" alt="">
-                    </div>
-                    <div class="col-md-9">
-                        <div class="card-body">
-                            <div class="card-title">High Life</div>
-                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <p class="card-text">
-                                <small class="text-muted">3 days ago</small>
-                            </p>
-                        </div>
-                    </div>
+            {% else %}
+                <div class="alert alert-warning">
+                    <p>
+                        No Movies
+                    </p>
+                </div>    
+            {% endif %}
+            
 
-                </div>
-            </div>
         </div>
     </div>
 {% endblock %}
