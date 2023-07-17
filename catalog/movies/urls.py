@@ -3,6 +3,7 @@ from . import views
 
 # 127.0.0.1:8000/movies
 # 127.0.0.1:8000/movies/2
+# 127.0.0.1:8000/movies/search
 
 
 urlpatterns = [
