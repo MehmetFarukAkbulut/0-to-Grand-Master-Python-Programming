@@ -1,11 +1,25 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
+from django.contrib import auth
 
 # Create your views here.
 
 
 def login(request):
-    return render(request,'user/login.html')
+    if request.method=='POST':
+        username=request.POST['username']
+        password=request.POST['password']
+    
+        user=auth.authenticate(username=username,password=password)
+        if user is not None:
+            auth.login(request,user)
+            print('Login Başarılı.')
+            return redirect('index') 
+        else:
+            print('Kullanıcı adı veya parola yanlış.')
+            return redirect('login')
+    else:
+        return render(request,'user/login.html')
 
 
 def register(request):
