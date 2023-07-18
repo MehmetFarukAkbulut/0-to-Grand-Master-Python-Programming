@@ -30,7 +30,7 @@ def register(request):
                     user=User.objects.create_user(username=username,password=password,email=email)
                     user.save()
                     print('Kullanıcı oluşturuldu.')
-                    return register('login')
+                    return redirect('login')
             
             
         else:
