@@ -9,7 +9,7 @@ def index(request):
     }
     return render(request, 'movies/list.html', context)
 
-def detail(request):
+def detail(request,movie_id):
     return render(request, 'movies/detail.html')
 def search(request):
     return render(request, 'movies/search.html')
