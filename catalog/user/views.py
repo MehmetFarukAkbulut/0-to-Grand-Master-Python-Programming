@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 
@@ -10,6 +10,7 @@ def login(request):
 def register(request):
     if request.method=='POST':
         print('submitted')
+        return redirect('register')
     else:
         return render(request,'user/register.html')
 
